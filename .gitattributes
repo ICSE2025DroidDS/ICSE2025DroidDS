@@ -1,1 +1,2 @@
 Method/DroidDS filter=lfs diff=lfs merge=lfs -text
+Data/Methodology/DroidDS-sample/output/entities_ownership.csv filter=lfs diff=lfs merge=lfs -text
