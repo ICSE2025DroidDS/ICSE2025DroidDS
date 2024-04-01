@@ -106,7 +106,7 @@ The whole directory tree goes like the following:
     └─setup_scripts
 ```
 
-The video demo (speed up 16 times) website is at (upload soon).
+The video demo of `DroidDS-sample` (speed up 16 times) website is at (upload soon).
 
 ## Method
 
@@ -155,7 +155,7 @@ eaxmple usage:
 - `DroidDS` requires high performance, so we've set the `JVM` memory to a default of `16GB` to prevent heap overflow.
 - When using the command-line arguments `rpe` and `rpen` (same as `rpa` and `rpan`)with the provided tool, it's important to ensure that the value for `rpen(-rpan)` (representing the name of the project) directly corresponds to the last segment of the path provided to `rpe(-rpa)`(representing the repository path).
 - The `-hidden_extensive -hde` and `-hidden_aosp -hda` arguments are optional.
-    - However, omitting these options might impact the accuracy or completeness of detection results, particularly in relation to specific aspects denoted by "XX", "XX", and "XX".
+    - However, omitting these options might impact the accuracy or completeness of detection results, particularly in relation to specific aspects denoted by UD1and UD2.
 - `DroidDS` may takes a long time to run, as indicated by its 85-minute duration in the mentioned `DroidDS-sample` project.
 
 ## Scripts
@@ -164,13 +164,13 @@ eaxmple usage:
 
 ### Collecting Merge Conflicts
 
-You can refer to the `README` of [depFCD](https://github.com/DepFCD/DepFCD)  (in the [Set up]((%3Chttps://github.com/DepFCD/DepFCD?tab=readme-ov-file#scripts%3E)))for the process of collecting merge conflicts.
+You can refer to the `README` of [depFCD](https://github.com/DepFCD/DepFCD)  (in the [Set up](https://github.com/DepFCD/DepFCD?tab=readme-ov-file#scripts))for the process of collecting merge conflicts.
 
 ### Collecting Recurring Merge Conflicts
 
 The following are the main steps for collecting recurring merge conflicts:
 
-***Step 1:***  `[process_conf_text.py](Scripts/setup_scripts/process_conf_text.py)`. This script automatically reverts the target repository to the parent commit state involved in the conflict and extracts the conflict text information.
+***Step 1:***  [process_conf_text.py](Scripts/setup_scripts/process_conf_text.py). This script automatically reverts the target repository to the parent commit state involved in the conflict and extracts the conflict text information.
 
 - *Input*: A `CSV` file that records the details of the conflicting blocks.
 - *Output*: `JSON` file containing text information corresponding to each conflicting block.
@@ -187,50 +187,50 @@ The following are the main steps for collecting recurring merge conflicts:
 
 ### RQ1
 
-The `compute_avg_measures.py` is to compute value for files infected by design smells and that for non-infected files and `compute_wilcoxon.py` is to do Wilcoxon test based on each group of (avg_mc_aff, avg_mc_aff ).
+The [compute_avg_measures.py](Scripts/RQ_scripts/RQ1/compute_avg_measures.py) is to compute value for files infected by design smells and that for non-infected files and [compute_wilcoxon.py](Scripts/RQ_scripts/RQ1/compute_wilcoxon.py) is to do Wilcoxon test based on each group of (avg_mc_aff, avg_mc_nonaff ).
 
 ```less
-take DroidDS-sample's output as an eaxmple usage
+The script takes the outputs of DroidDS-sample output as an eaxmple usage
 python compute_avg_measures.py
 python compute_wilcoxon.py
 ```
 
 - *Input*:
-    1. `all_aff_files.csv` , it is one of the output results from `DroidDS` and the column names are `project` , `aff_files`, `aff_files_count`. For detailed information, please refer to the part of Data/Methodology/output[].
-    2. `file-ext_mc.csv`, it is one of the output results from `DroidDS` and the column names are `filename`, `#author`, `#cmt`,`changeloc`,`#issue`,`#issue-cmt`,`issueLoc`. For detailed information, please refer to the part of Data/Methodology/output[].
+    1. all_aff_files.csv , it is one of the output results from `DroidDS` and the column names are `project` , `aff_files`, `aff_files_count`.  The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e.,  [all_aff_files.csv]().
+    2. `file-ext_mc.csv`, it is one of the output results from `DroidDS` and the column names are `filename`, `#author`, `#cmt`,`changeloc`,`#issue`,`#issue-cmt`,`issueLoc`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [file-ext_mc.csv]().
 - *Output:*
     - `metrics.csv`: the column names are `project`,`avg_mc_aff`,`avg_mc_nonaff`,which indicating the average maintenance cost (i.e., avg_mc_aff ) of the files involved in design smells and the average values (i.e., avg_mc_nonaff ) of other files in terms of each measure.
-    - `Wilcoxon-output.csv` : the column names are `project` , `P-value`, `increase`,which indicating the results of Wilcoxon Sign-Rank tests based on each group of (avg_mc_aff, avg_mc_aff ).
+    - `Wilcoxon-output.csv` : the column names are `project` , `P-value`, `increase`,which indicating the results of Wilcoxon Sign-Rank tests based on each group of (avg_mc_aff, avg_mc_nonaff ).
 
 ### RQ2
 
-- ***Step 1*** : Run `andro_base_branch_commit_hist.py` to retrieve commit history.
+- ***Step 1*** : Run [andro_base_branch_commit_hist.py](Scripts/RQ_scripts/RQ2/andro_base_branch_commit_hist.py) to retrieve commit history.
     - Input: Path to the project's base repository and all branch versions of the repository.
     - Output: A text file that stores all the commit history.
-- ***Step 2*** : Run `merge_extract.py` to acquire all merge points.
+- ***Step 2*** : Run [merge_extract.py](Scripts/RQ_scripts/RQ2/merge_extract.py) to acquire all merge points.
     - Input: The branches of Android variants and AOSP.
     - Output: The merge points of Android variants and AOSP.
-- ***Step 3*** : Run `merge_conf_ast.py` to get the details of conflict blocks.
+- ***Step 3*** : Run [merge_conf_ast.py](Scripts/RQ_scripts/RQ2/merge_conf_ast.py) to get the details of conflict blocks.
     - Input: Path to the base repository of Android variants and AOSP.
     - Output: A CSV file stores information about conflict blocks.
-- ***Step 4*** : Run `process_conf_meths.py` to obtain detailed information on conflict blocks.
+- ***Step 4*** : Run [process_conf_meths.py](Scripts/RQ_scripts/RQ2/process_conf_meths.py) to obtain detailed information on conflict blocks.
     - Input: A file called `project-version-merge.csv` generated from ***Step 3***.
     - Output: A CSV file stores detailed information on conflict blocks.
-- ***Step 5*** : Run `conf_meths_cap.py` to obtain conflict information involving design smells.
+- ***Step 5*** : Run [conf_meths_cap.py](Scripts/RQ_scripts/RQ2/conf_meths_cap.py) to obtain conflict information involving design smells.
     - Input: The CSV file produced in the fourth step.
     - Output: A CSV file stores conflict information involving design smells.
 
 ### RQ3
 
-The `filter_mitigable.py` is used to assess whether a design smell instance is mitigable. 
+The [filter_mitigable.py](Scripts/RQ_scripts/RQ3/filter_mitigable.py) is used to assess whether a design smell instance is mitigable. 
 
 ```less
-take DroidDS-sample's output as an eaxmple usage
+The script takes the outputs of DroidDS-sample as an eaxmple usage
 python filter_mitigable.py
 ```
 
 - *Input*:
-    - `res_metric_statistic.json` , it is one of the output results from `DroidDS`.
+    - `res_metric_statistic.json` , it is one of the output results from `DroidDS`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [res_metric_statistic.json]().
 - *Output:*
     - `mitigable_count.csv`: the column names are `project`,`smell_mitigable`,`smell_notMitigable`, which indicating project name, the kind of smell, count of mitigable or not mitigable smell instance.
 
@@ -242,15 +242,17 @@ To better illustrate the input and output of `DroidDS`, we provided an sample pr
 
 `Operating System` : Ubuntu 18.04.1
 
-`Input argument explanation`
+`Java`: 21.0.2 2024-01-16 LTS
 
-The Android variant version of the sample project is LineageOS-lineage-18.1, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/L-18.1`(i.e. the input of `-rpe` argument). The final directory is L-18.1 (i.e. the input of `-rpen` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv` (i.e. the input of `-hde` argument). Its commitId is `7f7fc2562a95be630dbe609e8fb70383dcfada4f` (i.e. the input of `-ce` argument). 
+`Input argument explanation`：
 
-The corresponding AOSP version of the sample project is AOSP-android11, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/`aosp_android11 (i.e. the input of `-rp`a argument). The final directory is aosp_android11  (i.e. the input of `-rpea` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-android11.csv` (i.e. the input of `-hd`a argument). Its commitId is `49d8b986dddd441df741698541788c5f3a9c465f` (i.e. the input of `-ce` argument). 
+The Android variant version of the sample project is LineageOS-lineage-18.1, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/L-18.1`(i.e. the input of `-rpe` argument). The final directory is `L-18.1` (i.e. the input of `-rpen` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv` (i.e. the input of `-hde` argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv) . Its commitId is `7f7fc2562a95be630dbe609e8fb70383dcfada4f` (i.e. the input of `-ce` argument), the corresponding code is at https://github.com/LineageOS/android_frameworks_base/tree/7f7fc2562a95be630dbe609e8fb70383dcfada4f
 
-The outputs of `DroidDS-sample` is `/data1/DroidDS/DroidDS-sample/output`(i.e. the input of `-o` argument).
+The corresponding AOSP version of the sample project is AOSP-android11, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/aosp_android11` (i.e. the input of `-rp`a argument). The final directory is `aosp_android11`  (i.e. the input of `-rpea` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-android11.csv` (i.e. the input of `-hd`a argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-android11.csv) . Its commitId is `49d8b986dddd441df741698541788c5f3a9c465f` (i.e. the input of `-ce` argument), the corresponding code is at https://android.googlesource.com/platform/frameworks/base/+/49d8b986dddd441df741698541788c5f3a9c465f
 
-It should be noted that due to the large scale of the Android system's code, we are unable to upload the complete project source code to the GitHub repository. 
+The outputs of `DroidDS-sample`  designated is `/data1/DroidDS/DroidDS-sample/output`(i.e. the input of `-o` argument).
+
+*It should be noted that due to the large scale of the Android system's code, we are unable to upload the complete project source code to the GitHub repository. You can refer to [AOSP platforms/frameworks/base](https://android.googlesource.com/platform/frameworks/base/) and [LineageOS platforms/frameworks/base](https://github.com/LineageOS/android_frameworks_base) and clone codes.*
 
 So, the example usage is : 
 
@@ -267,11 +269,9 @@ So, the example usage is :
   -o /data1/DroidDS/DroidDS-sample/output
 ```
 
-`TimeCost` : one and half hour
+`TimeCost` : the `DroidDS-sample` project took an hour and a half to complete.
 
-The video demo (speed up 16 times) website is at 
-
-This `Data/Methodology/DroidDS-sample/output`directory contains the data of ownership, dependencies information, maintenance cost, design smell detection result and files affected by design smells generated by `DroidDS`. Below is an introduction to the content of each file.
+This [Data/Methodology/DroidDS-sample/output](Data/Methodology/DroidDS-sample/output) directory contains the data of ownership, dependencies information, maintenance cost, design smell detection result and files affected by design smells generated by `DroidDS`. Below is an introduction to the content of each file.
 
 - `all_aff_files.csv` : the file list which affected by design smells.
 - `dependencies.csv` : the result of dependencies between AOSP and AOSP variant.
@@ -301,7 +301,7 @@ This directory contains data on textual conflict detection results of each proje
 
 ### RQ1: Do entities involved in design smells consume more maintenance costs than other entities in Android variants?
 
-All files mentioned below are in /Data/Results/RQ1.
+All files mentioned below are in [Data/Results/RQ1](Data/Results/RQ1).
 
 The content of `all_aff_files.csv` is the file list affected by design smells in each project.
 
@@ -309,13 +309,17 @@ The content of `Figure 4.csv` is the original data of `Figure 4`.
 
 The content of `Table 3.csv` is  the original data of `Table 3`.
 
-### The files in `mc` are the original files generated by `DroidDS`, and each `file-mc_ext.csv` in {project}/{verison} directory records the maintenance cost for each file computed by`author`, `commit`,`changeloc`,`issue` ,`#issue-cmt`,`issueLoc`.
+#### [mc](Data/Results/RQ1/mc)
+
+The files in `mc` are the original files generated by `DroidDS`, and each `file-mc_ext.csv` in {project}/{verison} directory records the maintenance cost for each file computed by`author`, `commit`,`changeloc`,`issue` ,`#issue-cmt`,`issueLoc`.
 
 ### RQ2: To what extent do the entities involved in design smells capture conflicts due to Android variants merging with AOSP changes?
 
-All files or directories mentioned below are in Data/Results/RQ2.
+All files or directories mentioned below are in [Data/Results/RQ2](Data/Results/RQ2).
 
-### The files in `ConfF&ConfB` are generated by RQ2 Step 4, and each `project-version-meths.csv` file records the conflict block information of the project that has occurred conflict merge several times.
+#### [ConfF&ConfB](Data/Results/RQ2/ConfF&ConfB)
+
+The files in `ConfF&ConfB` are generated by RQ2 Step 4, and each `project-version-meths.csv` file records the conflict block information of the project that has occurred conflict merge several times.
 
 - `Merge`: The commit id on which the merge conflict occurred
 - `Conf_detail`: The file in conflict
@@ -323,7 +327,9 @@ All files or directories mentioned below are in Data/Results/RQ2.
 - `Block`: The number of conflicting blocks in the file
 - `Loc_details`: The location information for each conflicting block, including the start line number and the total number of lines.
 
-### The files in `ConfF&ConfB_cap` are generated by RQ2 step 5. Each `project-version-meths.csv` file records the conflict block information of several conflict merges in the project, and these conflicts are caused by anti-patterns.
+#### [ConfF&ConfB_cap](Data/Results/RQ2/ConfF&ConfB_cap)
+
+The files in `ConfF&ConfB_cap` are generated by RQ2 step 5. Each `project-version-meths.csv` file records the conflict block information of several conflict merges in the project, and these conflicts are caused by anti-patterns.
 
 - `Merge` : The commit id on which the merge conflict occurred
 - `Conf_detail`: The file where the conflict occurred
@@ -332,7 +338,9 @@ All files or directories mentioned below are in Data/Results/RQ2.
 - `Loc_details` : Location information for each conflicting block, including the start line number and total line number.
 - `is_in_aff_files` : Used to indicate if the conflict is related to the antipattern, "True".
 
-### `recur_block_cap` is used to record repeated conflict blocks across commits, versions, and projects when the threshold is set to 50%.
+#### [recur_block_cap/text-50%](Data/Results/RQ2/recur_block_cap/text-50%)
+
+`recur_block_cap` is used to record repeated conflict blocks across commits, versions, and projects when the threshold is set to 50%.
 
 - The files in `diff-commit`, `diff-version`, and `diff-project` are derived from steps 1 and 2 of Set up 3.3. Here's an explanation of the fields in each `progect-cap-recur_textblock.csv` file:
     - `merge_commitid`: The commitid on which the merge conflict occurred.
@@ -349,10 +357,13 @@ All files or directories mentioned below are in Data/Results/RQ2.
 
 ### RQ3: To what extent can design smell instances be mitigable to promote Android variant maintainability?
 
-All files or directories mentioned below are in Data/Results/RQ3
+All files or directories mentioned below are in [Data/Results/RQ3](Data/Results/RQ3)
 
 The content of `Table 7.csv` is  the original data of `Table 7`.
 
 The content of `Table 8.csv` is  the original data of `Table 8`.
 
-### The files in `mitigable` are the original files generated by `DroidDS`, and each `res_metric_statistic.json` in {project}/{verison} directory records the metrics about mitigable or notMitigable.
+#### [mitigable](Data/Results/RQ3/mitigable)
+
+The files in `mitigable` are the original files generated by `DroidDS`, and each `res_metric_statistic.json` in {project}/{verison} directory records the metrics about mitigable or notMitigable.
+
