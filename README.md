@@ -4,6 +4,10 @@ This repository illustrates the tool, data, and scripts of our ICSE2025 under-re
 
 We opened all of the collected data of the investigated open-source subjects.  Due to the file size limit of GitHub, we upload the processed data to this repository. Please connect us for the large-scale raw data if required.
 
+The video demo of `DroidDS-sample` (speed up 16 times) is [DroidDS-sample-demo.mp4](Data/Methodology/DroidDS-sample/DroidDS-sample-demo.mp4).
+
+## Directory Structure
+
 The whole directory tree goes like the following:
 
 ```
@@ -74,7 +78,7 @@ The whole directory tree goes like the following:
 │  │          │  ├─lineage-17.1
 │  │          │  └─lineage-16.0
 │  │          └─OmniROM
-│  │          │  ├─android13.0
+│  │          │  ├─android-13.0
 │  │          │  ├─android-13.0
 │  │          │  ├─android-12.0
 │  │          │  ├─android-11
@@ -105,8 +109,6 @@ The whole directory tree goes like the following:
     │  └─RQ3
     └─setup_scripts
 ```
-
-The video demo of `DroidDS-sample` (speed up 16 times) website is at (upload soon).
 
 ## Method
 
@@ -155,7 +157,7 @@ eaxmple usage:
 - `DroidDS` requires high performance, so we've set the `JVM` memory to a default of `16GB` to prevent heap overflow.
 - When using the command-line arguments `rpe` and `rpen` (same as `rpa` and `rpan`)with the provided tool, it's important to ensure that the value for `rpen(-rpan)` (representing the name of the project) directly corresponds to the last segment of the path provided to `rpe(-rpa)`(representing the repository path).
 - The `-hidden_extensive -hde` and `-hidden_aosp -hda` arguments are optional.
-    - However, omitting these options might impact the accuracy or completeness of detection results, particularly in relation to specific aspects denoted by UD1and UD2.
+    - However, omitting these options might impact the accuracy or completeness of detection results, particularly in relation to specific aspects denoted by `UD1` and `UD2`.
 - `DroidDS` may takes a long time to run, as indicated by its 85-minute duration in the mentioned `DroidDS-sample` project.
 
 ## Scripts
@@ -196,8 +198,8 @@ python compute_wilcoxon.py
 ```
 
 - *Input*:
-    1. all_aff_files.csv , it is one of the output results from `DroidDS` and the column names are `project` , `aff_files`, `aff_files_count`.  The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e.,  [all_aff_files.csv]().
-    2. `file-ext_mc.csv`, it is one of the output results from `DroidDS` and the column names are `filename`, `#author`, `#cmt`,`changeloc`,`#issue`,`#issue-cmt`,`issueLoc`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [file-ext_mc.csv]().
+    1. all_aff_files.csv , it is one of the output results from `DroidDS` and the column names are `project` , `aff_files`, `aff_files_count`.  The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e.,  [all_aff_files.csv](Data/Methodology/DroidDS-sample/output/all_aff_files.csv).
+    2. `file-mc_ext.csv`, it is one of the output results from `DroidDS` and the column names are `filename`, `#author`, `#cmt`,`changeloc`,`#issue`,`#issue-cmt`,`issueLoc`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [file-mc_ext.csv](Data/Methodology/DroidDS-sample/output/file-mc_ext.csv).
 - *Output:*
     - `metrics.csv`: the column names are `project`,`avg_mc_aff`,`avg_mc_nonaff`,which indicating the average maintenance cost (i.e., avg_mc_aff ) of the files involved in design smells and the average values (i.e., avg_mc_nonaff ) of other files in terms of each measure.
     - `Wilcoxon-output.csv` : the column names are `project` , `P-value`, `increase`,which indicating the results of Wilcoxon Sign-Rank tests based on each group of (avg_mc_aff, avg_mc_nonaff ).
@@ -230,7 +232,7 @@ python filter_mitigable.py
 ```
 
 - *Input*:
-    - `res_metric_statistic.json` , it is one of the output results from `DroidDS`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [res_metric_statistic.json]().
+    - `res_metric_statistic.json` , it is one of the output results from `DroidDS`. The script takes `DroidDS-sample`'s output as an eaxmple usage, i.e., [res_metric_statistic.json](Data/Methodology/DroidDS-sample/output/res_metric_statistic.json).
 - *Output:*
     - `mitigable_count.csv`: the column names are `project`,`smell_mitigable`,`smell_notMitigable`, which indicating project name, the kind of smell, count of mitigable or not mitigable smell instance.
 
@@ -301,7 +303,7 @@ This directory contains data on textual conflict detection results of each proje
 
 ### RQ1: Do entities involved in design smells consume more maintenance costs than other entities in Android variants?
 
-All files mentioned below are in [Data/Results/RQ1](Data/Results/RQ1).
+All files or directories mentioned below are in [Data/Results/RQ1](Data/Results/RQ1).
 
 The content of `all_aff_files.csv` is the file list affected by design smells in each project.
 
