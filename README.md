@@ -4,7 +4,7 @@ This repository illustrates the tool, data, and scripts of our ICSE2025 under-re
 
 We opened all of the collected data of the investigated open-source subjects.  Due to the file size limit of GitHub, we upload the processed data to this repository. Please connect us for the large-scale raw data if required.
 
-The video demo of `DroidDS-sample` (speed up 16 times) is [DroidDS-sample-demo.mp4](Data/Methodology/DroidDS-sample/DroidDS-sample-demo.mp4).
+We have provided a video [DroidDS-sample-demo](Data/Methodology/DroidDS-sample/DroidDS-sample-demo.mp4)  to demonstrate of our tool `DroidDS` running on a sample project.
 
 ## Directory Structure
 
@@ -131,10 +131,10 @@ arguments:
 `--memory`, `-mem`: Specify the maximum memory usage of the Java Virtual Machine(JVM). Default is `16G`.
 `--repo_extensive`, `-rpe`: Specify the Git repository path for the extensive AOSP.
 `--repo_extensive_name`, `-rpen`: Specify the project name for the extensive AOSP repository.
-`--hidden_extensive`, `-hde`: Specify the path to the CSV file containing extensive AOSP hidden flags.
+`--hidden_extensive`, `-hde`: Specify the path to the CSV file containing extensive AOSP non-SDK level flags.
 `--repo_aosp`, `-rpa`: Specify the Git repository path for the AOSP project.
 `--repo_aosp_name`, `-rpan`: Specify the project name for the AOSP repository.
-`--hidden_aosp`, `-hda`: Specify the path to the CSV file containing AOSP hidden flags.
+`--hidden_aosp`, `-hda`: Specify the path to the CSV file containing AOSP non-SDK level flags.
 `--commit_extensive`, `-ce`: Specify the commit hash for the extensive AOSP project.
 `--commit_aosp`, `-ca`: Specify the commit hash for the AOSP project.
 `--output`, `-o`: Specify the root directory for output files.
@@ -154,11 +154,8 @@ eaxmple usage:
 
 ### Additional Notes
 
-- `DroidDS` requires high performance, so we've set the `JVM` memory to a default of `16GB` to prevent heap overflow.
+- Due to the large scale of the Android project to be analyzed,  usually including about millions of lines of code and hundreds of thousands of commit records. We suggest that the hardware configuration of the runtime environment should have a minimum of 32GB of memory, and the `JVM` should be set to at least 16GB to prevent heap overflow.
 - When using the command-line arguments `rpe` and `rpen` (same as `rpa` and `rpan`)with the provided tool, it's important to ensure that the value for `rpen(-rpan)` (representing the name of the project) directly corresponds to the last segment of the path provided to `rpe(-rpa)`(representing the repository path).
-- The `-hidden_extensive -hde` and `-hidden_aosp -hda` arguments are optional.
-    - However, omitting these options might impact the accuracy or completeness of detection results, particularly in relation to specific aspects denoted by `UD1` and `UD2`.
-- `DroidDS` may takes a long time to run, as indicated by its 85-minute duration in the mentioned `DroidDS-sample` project.
 
 ## Scripts
 
@@ -166,7 +163,7 @@ eaxmple usage:
 
 ### Collecting Merge Conflicts
 
-You can refer to the `README` of [depFCD](https://github.com/DepFCD/DepFCD)  (in the [Set up](https://github.com/DepFCD/DepFCD?tab=readme-ov-file#scripts))for the process of collecting merge conflicts.
+You can refer to *2023-Dependency facade: The coupling and conflicts between android framework and its customization* for the process of collecting merge conflicts.
 
 ### Collecting Recurring Merge Conflicts
 
@@ -248,9 +245,9 @@ To better illustrate the input and output of `DroidDS`, we provided an sample pr
 
 `Input argument explanation`：
 
-The Android variant version of the sample project is LineageOS-lineage-18.1, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/L-18.1`(i.e. the input of `-rpe` argument). The final directory is `L-18.1` (i.e. the input of `-rpen` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv` (i.e. the input of `-hde` argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv) . Its commitId is `7f7fc2562a95be630dbe609e8fb70383dcfada4f` (i.e. the input of `-ce` argument), the corresponding code is at https://github.com/LineageOS/android_frameworks_base/tree/7f7fc2562a95be630dbe609e8fb70383dcfada4f
+The Android variant version of the sample project is LineageOS-lineage-18.1, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/L-18.1`(i.e. the input of `-rpe` argument). The final directory is `L-18.1` (i.e. the input of `-rpen` argument). Its non-SDK level file is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv` (i.e. the input of `-hde` argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-L-18.1.csv) . Its commitId is `7f7fc2562a95be630dbe609e8fb70383dcfada4f` (i.e. the input of `-ce` argument), the corresponding code is at https://github.com/LineageOS/android_frameworks_base/tree/7f7fc2562a95be630dbe609e8fb70383dcfada4f
 
-The corresponding AOSP version of the sample project is AOSP-android11, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/aosp_android11` (i.e. the input of `-rp`a argument). The final directory is `aosp_android11`  (i.e. the input of `-rpea` argument). Its hidden-flags is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-android11.csv` (i.e. the input of `-hd`a argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-android11.csv) . Its commitId is `49d8b986dddd441df741698541788c5f3a9c465f` (i.e. the input of `-ce` argument), the corresponding code is at https://android.googlesource.com/platform/frameworks/base/+/49d8b986dddd441df741698541788c5f3a9c465f
+The corresponding AOSP version of the sample project is AOSP-android11, and its source code of `platform/frameworks/base` is in `/data1/DroidDS/AndroidSourceCodeGit/aosp_android11` (i.e. the input of `-rp`a argument). The final directory is `aosp_android11`  (i.e. the input of `-rpea` argument). Its non-SDK level file is `/data1/DroidDS/DroidDS-sample/input/hiddenapi-flags-android11.csv` (i.e. the input of `-hda` argument), we upload it at [hiddenapi-flags-L-18.1.csv](Data/Methodology/DroidDS-sample/input/hiddenapi-flags-android11.csv) . Its commitId is `49d8b986dddd441df741698541788c5f3a9c465f` (i.e. the input of `-ce` argument), the corresponding code is at https://android.googlesource.com/platform/frameworks/base/+/49d8b986dddd441df741698541788c5f3a9c465f
 
 The outputs of `DroidDS-sample`  designated is `/data1/DroidDS/DroidDS-sample/output`(i.e. the input of `-o` argument).
 

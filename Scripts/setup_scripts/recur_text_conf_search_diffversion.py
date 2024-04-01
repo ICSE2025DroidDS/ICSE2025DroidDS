@@ -7,7 +7,7 @@ from difflib import SequenceMatcher
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
-#用来判断是否有重复值
+# determines if there are duplicates
 def is_duplicate(entry, existing_entries):
     for existing_entry in existing_entries:
         if (sorted(entry["merge_commitid"]) == sorted(existing_entry["merge_commitid"]) and

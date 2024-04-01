@@ -25,7 +25,7 @@ def main():
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
 
-    with open("D:/Master1-group/conflict_record/conf_meths/lineage-17.1-meths.csv", "r") as file: #输入，修改meths名
+    with open("D:/Master1-group/conflict_record/conf_meths/lineage-17.1-meths.csv", "r") as file: 
         csv_reader = csv.reader(file)
         next(csv_reader)  # skip header
 
@@ -36,7 +36,6 @@ def main():
             file_path = row[2]
             loc_details_str = row[6]
 
-            #修改项目名
             os.chdir("Lineage")
             parent_commitid = get_parent_commit_id(merge_commitid)
             print("merge_commitid:", merge_commitid)
