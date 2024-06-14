@@ -824,67 +824,9 @@ public class ApduServiceInfo implements Parcelable {
 
 
 
-## Table 1 Statistics on the number of lines of file code and complexity of files
+## Table 1 The precision and recall of design smells in relation to merge conflicts at the file level
 
-**Table 1** is intended to provide supporting evidence for  the weakness mentioned in Review C.  It specifies the statistics of LOC (Lines of Code) and Cyclomatic Complexity for 17 versions of 4 projects, categorized by whether files are affected by anti-patterns.
-
-**Review C#Weakness: For example, when analyzing the impact of design smell occurrence on change- and fault-proneness, it is unclear how the authors accounted for confounding factors such as object-oriented smells contained in the files, which are already known to be related to change- and fault-proneness. The authors also did not account for the confounding effects of size and complexity.**
-
-| project   | version      | file_num | aff_num | aff_avg_loc | aff_avg_cc | not_aff_num | not_aff_avg_loc | not_aff_avg_cc |
-| --------- | ------------ | -------- | ------- | ----------- | ---------- | ----------- | --------------- | -------------- |
-| AOSPA     | quartz       | 9094     | 212     | 2174.797    | 300.8443   | 8882        | 360.7309        | 52.02353       |
-| AOSPA     | ruby         | 11947    | 333     | 1684.462    | 215.3393   | 11614       | 355.5857        | 47.84346       |
-| AOSPA     | sapphire     | 13524    | 1463    | 994.1661    | 124.028    | 12061       | 313.4398        | 41.46406       |
-| AOSPA     | topaz        | 14399    | 329     | 1893.742    | 243.0182   | 14070       | 351.635         | 45.13284       |
-| CalyxOS   | android11    | 11957    | 90      | 2310.256    | 361.9556   | 11867       | 377.0133        | 49.98449       |
-| CalyxOS   | android12    | 13363    | 75      | 2296.48     | 329.88     | 13288       | 374.7183        | 48.66654       |
-| CalyxOS   | android13    | 14326    | 100     | 2330.22     | 329.72     | 14226       | 372.961         | 47.61732       |
-| LineageOS | lineage-16.0 | 9107     | 255     | 1666.843    | 254.0078   | 8852        | 366.0451        | 52.12065       |
-| LineageOS | lineage-17.1 | 10545    | 270     | 1752.726    | 268.1296   | 10275       | 360.576         | 49.17217       |
-| LineageOS | lineage-18.1 | 11969    | 275     | 1690.884    | 233.9091   | 11694       | 361.5008        | 48.11621       |
-| LineageOS | lineage-19.1 | 13536    | 263     | 1826.856    | 255.5057   | 13273       | 357.7814        | 46.23084       |
-| LineageOS | lineage-20.0 | 14339    | 176     | 1974.92     | 275.1648   | 14163       | 366.9177        | 46.80604       |
-| OmniROM   | android-9    | 9107     | 199     | 1938.518    | 266.0603   | 8908        | 367.9894        | 53.05478       |
-| OmniROM   | android-10   | 10552    | 247     | 1677.927    | 216.6113   | 10305       | 365.4747        | 50.89044       |
-| OmniROM   | android-11   | 12003    | 419     | 1666.203    | 218.4224   | 11584       | 346.2776        | 46.48161       |
-| OmniROM   | android-12.0 | 13359    | 100     | 1587.44     | 248.95     | 13259       | 376.5768        | 48.76763       |
-| OmniROM   | android-13.0 | 14324    | 96      | 1510.771    | 241.6771   | 14228       | 379.0928        | 48.29667       |
-
-**Concept description for Table 1 columns**
-
-| Name            | Description                                                  |
-| --------------- | ------------------------------------------------------------ |
-| project         | Andriod project name                                         |
-| version         | Detailed version of project                                  |
-| file_num        | The number of Java files in the project                      |
-| aff_num         | The number of Java files with design smells                  |
-| aff_avg_loc     | The average number of line of code in Java files with design smells |
-| aff_avg_cc      | The average Cyclomatic Complexity(CC) in Java files with design smells |
-| CC              | The sum of Cyclomatic Complexity(CC) of methods in code file |
-| not_aff_num     | The number of Java files **without** design smells           |
-| not_aff_avg_loc | The average number of line of code in Java files **without** design smells |
-| not_aff_avg_cc  | The average Cyclomatic Complexity(CC) in Java files **without** design smells |
-
-## Table 2 The correlation between the occurrence of design code smells in files and the file size as well as code complexity
-
-Based on the data from **Table 1**, we analyzed the correlation between the occurrence of design code smells in files and both file size (measured in Lines of Code, LOC) and code complexity (measured by Cyclomatic Complexity). The strength of these correlations is evaluated using **p-value** and **effect size**.  **Table 2** results indicate a statistically significant and strong correlation between design code smells and both file size and code complexity.
-
-| measure | p-value             | effect size |
-| ------- | ------------------- | ----------- |
-| LOC     | 7.63E-06 < 0.000001 | 6.09        |
-| CC      | 7.63E-06 < 0.000001 | 5.42        |
-
-**Concept description for Table 2 columns**
-
-| Name        | Description                                                  |
-| ----------- | ------------------------------------------------------------ |
-| measure     | The name of metric                                           |
-| p-value     | The p-value is the probability of obtaining results at least as extreme as the observed data, assuming that the null hypothesis is true. |
-| effect size | The effect size is a quantitative measure that estimates the magnitude of differences between groups, or strength of relationships between variables. |
-
-## Table 3 The precision and recall of design smells in relation to merge conflicts at the file level
-
-**Table 3** specifies the precision and recall of design smells in relation to merge conflicts at the file level.
+**Table 1** specifies the precision and recall of design smells in relation to merge conflicts at the file level.
 
 | Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| |  Rec_f  | Precision |
 | :-----: | :-------: | :-----------: | :------: | :-----: | :-------: |
@@ -912,9 +854,9 @@ Based on the data from **Table 1**, we analyzed the correlation between the occu
 |   I-A   |    321    |      266      |   1817   | 82.87%  |  14.64%   |
 | Average |    161    |      133      |   711    | 68.62%  |  15.98%   |
 
-## Table 4 The recall of design smells in relation to merge conflicts at the block level
+## Table 2 The recall of design smells in relation to merge conflicts at the block level
 
-**Table 4** specifies the recall of design smells in relation to merge conflicts at the block level.
+**Table 2** specifies the recall of design smells in relation to merge conflicts at the block level.
 
 | Project | \|ConfB\| | \|ConfB_cap\| |  Rec_b  |
 | :-----: | :-------: | :-----------: | :-----: |
@@ -942,13 +884,17 @@ Based on the data from **Table 1**, we analyzed the correlation between the occu
 |   I-A   |   1322    |     1170      | 88.50%  |
 | Average |    695    |      623      | 72.76%  |
 
-## Table 5 Statistical analysis of conflict blocks associated with design smells and non-design-smells files
+## Table 3 Statistical analysis of conflict blocks associated with design smells and non-design-smells files
+
+**Table 3** shows p-value for the average conflict (conf_average) is 0.002, indicating high statistical significance. The effect size is 0.974, demonstrating a very strong impact of design smells on file conflicts. Overall, these results highlight a strong correlation between design smells and file conflicts.
 
 |   Measure    | p-value | effect size |
 | :----------: | :-----: | :---------: |
 | conf_average |  0.002  |    0.974    |
 
-## Table 6 Validation results of recurring conflict blocks across commits
+## Table 4 Validation results of recurring conflict blocks across commits
+
+**Table 4**  shows the validation results for recurring conflict blocks across commits. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
 
 | Project | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :-----: | :-------: | :----------: | :--------: | :----: | :-------: |
@@ -970,7 +916,9 @@ Based on the data from **Table 1**, we analyzed the correlation between the occu
 |   O-9   |    12     |      0       |     0      |   0    |     0     |
 | Average |    119    |      7       |     5      | 40.94% |  39.12%   |
 
-## Table 7 Validation results of recurring conflict blocks across versions
+## Table 5 Validation results of recurring conflict blocks across versions
+
+**Table 5**  shows the validation results for recurring conflict blocks across versions. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
 
 |  Project  | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :-------: | :-------: | :----------: | :--------: | :----: | :-------: |
@@ -980,9 +928,11 @@ Based on the data from **Table 1**, we analyzed the correlation between the occu
 |  OmniROM  |    623    |      4       |     4      |  100%  |   100%    |
 |  Average  |    477    |      12      |     13     | 74.65% |  75.00%   |
 
-## Table 8 Validation results of recurring conflict blocks across projects
+## Table 6 Validation results of recurring conflict blocks across projects
 
-| **Project**  | **Block** | **Text-50%** | **Manual** | Recall | Precision |
+**Table 6**  shows the validation results for recurring conflict blocks across projects. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
+
+|   **Type**   | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :----------: | :-------: | :----------: | :--------: | :----: | :-------: |
 | Diff-project |   1906    |     672      |    648     |  100%  |  96.43%   |
 
