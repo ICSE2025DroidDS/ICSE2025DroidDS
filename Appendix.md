@@ -2,50 +2,54 @@
 
 ## Mitigable Cases
 
-**Q:You discuss the concept of mitigable design smells and provide predicates for identifying them. Have you conducted any practical experiments or case studies to verify whether these mitigable smells can indeed be eradicated as easily as suggested? If not, are there plans to validate these mitigation strategies empirically?**
+This section is intended to provide supporting evidence for  answering Review A's Question 1, Review B's Question 2, and the weakness mentioned in Review C. 
 
-**Concept Description:**
+- **Review A#Q1: You discuss the concept of mitigable design smells and provide predicates for identifying them. Have you conducted any practical experiments or case studies to verify whether these mitigable smells can indeed be eradicated as easily as suggested? If not, are there plans to validate these mitigation strategies empirically?**
+- **Review B#Q2: Can you remove/rephrase the unsupported claims?**
+- **Review C#Weaknesses: The paper makes multiple claims that are not adequately supported by analysis.**
+
+**Concept description**
 
 | Name          | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
-| Case          | The Case where these design smell instances were refactored in version history |
+| Case          | The Case where these design smell instances were eliminated in version history |
 | From Entity   | The source entity of relation                                |
 | Relation      | The type of relation                                         |
 | To Entity     | The destination entity of relation                           |
-| modified line | The number of modified line to refactor the design smell     |
-| Code fragment | The real code fragment of $Case$ in Android project          |
+| Modified Line | The number of modified line to eliminate the design smell    |
+| Code Fragment | The real code fragment of Case in Android project            |
 
-We have manually analyzed 73 instances of design smells that were eliminated in the version history, with 24 out of 73 cases identified as mitigable smells. The detailed information of 24 Cases are shown as below: 
+We have manually analyzed 73 instances of design smells that were eliminated in the version history, with 24 out of 73 cases identified as mitigable smells. Specifically, the detailed information of the 24 Cases is shown below, including code entities, dependencies, and source code fragment.
 
 ### Case 1
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.weatherTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 2
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.headsupTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 3
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.powerButtonTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 4
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.dataSwitchTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
-#### Code fragment in OmniROM-android11 (Case 1 - Case 4)
+#### Code Fragment in OmniROM-android11 (Case 1 - Case 4)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
@@ -107,7 +111,7 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
     }
 ```
 
-####  Code fragment in  OmniROM-android12 (Case 1 - Case 4)
+####  Code Fragment in  OmniROM-android12 (Case 1 - Case 4)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
@@ -187,30 +191,30 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation: Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.caffeineTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 6
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.adbOverNetworkProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 7
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.scrTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
 ### Case 8
 
 - From Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl
 - Relation : Parameter
 - To Entity : com.android.systemui.qs.tileimpl.QSFactoryImpl.QSFactoryImpl.immersiveTileProvider
-- **modified line : 2**
+- **Modified Line : 2**
 
-#### Code fragment in OmniROM-android10 (Case 5 - Case 8)
+#### Code Fragment in OmniROM-android10 (Case 5 - Case 8)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
@@ -276,7 +280,7 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 
 
 
-#### Code fragment in OmniROM-android11 (Case 5 - Case 8)
+#### Code Fragment in OmniROM-android11 (Case 5 - Case 8)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
@@ -343,21 +347,23 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - From Entity : com.android.settingslib.location.SettingsInjector
 - Relation : Define
 - To Entity : com.android.settingslib.location.SettingsInjector.parseServiceInfo
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 9)
+#### Code Fragment in OmniROM-android11 (Case 9)
 
 ```java
-    protected InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle, 
+// services/core/java/com/android/server/wm/ActivityStackSupervisor.java
+	protected InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle, 
             PackageManager pm) throws XmlPullParserException, IOException { 
     	...
     }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 9)
+#### Code Fragment in OmniROM-android12 (Case 9)
 
 ```java
-    private static InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle,
+// services/core/java/com/android/server/wm/ActivityStackSupervisor.java
+	private static InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle,
             PackageManager pm) throws XmlPullParserException, IOException {
     	...
     }
@@ -369,21 +375,23 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - Relation : Define
 - To Entity : com.android.keyguard.EmergencyButton.updateEmergencyCallButton
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 10)
+#### Code Fragment in OmniROM-android11 (Case 10)
 
 ```java
-    public void updateEmergencyCallButton() { // Case 10
+// services/core/java/com/android/server/wm/RootWindowContainer.java
+	public void updateEmergencyCallButton() {
         boolean visible = false;
         ...
     }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 10)
+#### Code Fragment in OmniROM-android12 (Case 10)
 
 ```java
-    void updateEmergencyCallButton(boolean isInCall, boolean isVoiceCapable, boolean simLocked) {  // Case 10
+// services/core/java/com/android/server/wm/RootWindowContainer.java
+	void updateEmergencyCallButton(boolean isInCall, boolean isVoiceCapable, boolean simLocked) {
         boolean visible = false;
         ...
     }
@@ -394,21 +402,23 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - From Entity : android.telecom.ConnectionService
 - Relation : Define
 - To Entity : android.telecom.ConnectionService.answerVideo
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 11)
+#### Code Fragment in OmniROM-android11 (Case 11)
 
 ```java
-    protected void answerVideo(String callId, int videoState) { // Case 11
+// telecomm/java/android/telecom/ConnectionService.java
+	protected void answerVideo(String callId, int videoState) {
         Log.i(this, "answerVideo %s", callId);
     	...
     }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 11)
+#### Code Fragment in OmniROM-android12 (Case 11)
 
 ```java
-    private void answerVideo(String callId, int videoState) { // Case 11
+// telecomm/java/android/telecom/ConnectionService.java
+	private void answerVideo(String callId, int videoState) {
         Log.i(this, "answerVideo %s", callId);
         ...
     }
@@ -419,21 +429,23 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - From Entity : android.telecom.ConnectionService
 - Relation : Define
 - To Entity : android.telecom.ConnectionService.answer
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 12)
+#### Code Fragment in OmniROM-android11 (Case 12)
 
 ```java
-    protected void answer(String callId) { // Case 12
+// telecomm/java/android/telecom/ConnectionService.java
+	protected void answer(String callId) {
         Log.i(this, "answer %s", callId);
         ...
     }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 12)
+#### Code Fragment in OmniROM-android12 (Case 12)
 
 ```java
-    private void answer(String callId) { // Case 12
+// telecomm/java/android/telecom/ConnectionService.java	
+	private void answer(String callId) {
         Log.i(this, "answer %s", callId);
         ...
     }
@@ -445,11 +457,12 @@ We have manually analyzed 73 instances of design smells that were eliminated in 
 - Relation : Define
 - To Entity : android.nfc.cardemulation.AidGroup.aids
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 13)
+#### Code Fragment in OmniROM-android11 (Case 13)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     protected List<String> aids;
@@ -457,9 +470,10 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 13)
+#### Code Fragment in OmniROM-android12 (Case 13)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     final List<String> aids;
@@ -474,11 +488,12 @@ public class AidGroup implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.AidGroup.category
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 14)
+#### Code Fragment in OmniROM-android11 (Case 14)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     protected String category;
@@ -486,9 +501,10 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 14)
+#### Code Fragment in OmniROM-android12 (Case 14)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     final String category;
@@ -503,11 +519,12 @@ public class AidGroup implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.AidGroup.description
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 15)
+#### Code Fragment in OmniROM-android11 (Case 15)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     protected String description;
@@ -515,9 +532,10 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 15)
+#### Code Fragment in OmniROM-android12 (Case 15)
 
 ```java
+// core/java/android/nfc/cardemulation/AidGroup.java
 public class AidGroup implements Parcelable {
     ...
     final String description;
@@ -532,11 +550,12 @@ public class AidGroup implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mService
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 16)
+#### Code Fragment in OmniROM-android11 (Case 16)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected ResolveInfo mService;
@@ -544,9 +563,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 16)
+#### Code Fragment in OmniROM-android12 (Case 16)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final ResolveInfo mService;
@@ -561,11 +581,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mDescription
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 17)
+#### Code Fragment in OmniROM-android11 (Case 17)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected String mDescription;
@@ -573,9 +594,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 17)
+#### Code Fragment in OmniROM-android12 (Case 17)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final String mDescription;
@@ -590,11 +612,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mOnHost
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 18)
+#### Code Fragment in OmniROM-android11 (Case 18)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected boolean mOnHost;
@@ -602,9 +625,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 18)
+#### Code Fragment in OmniROM-android12 (Case 18)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final boolean mOnHost;
@@ -619,11 +643,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mStaticAidGroups
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 19)
+#### Code Fragment in OmniROM-android11 (Case 19)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected  HashMap<String, AidGroup> mStaticAidGroups;
@@ -631,9 +656,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 19)
+#### Code Fragment in OmniROM-android12 (Case 19)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final HashMap<String, AidGroup> mStaticAidGroups;
@@ -648,11 +674,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mDynamicAidGroups
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 20)
+#### Code Fragment in OmniROM-android11 (Case 20)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected  HashMap<String, AidGroup> mDynamicAidGroups;
@@ -660,9 +687,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 20)
+#### Code Fragment in OmniROM-android12 (Case 20)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final HashMap<String, AidGroup> mDynamicAidGroups;
@@ -677,11 +705,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mRequiresDeviceUnlock
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 21)
+#### Code Fragment in OmniROM-android11 (Case 21)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected boolean mRequiresDeviceUnlock;
@@ -689,9 +718,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 21)
+#### Code Fragment in OmniROM-android12 (Case 21)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final boolean mRequiresDeviceUnlock;
@@ -706,11 +736,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mBannerResourceId
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 22)
+#### Code Fragment in OmniROM-android11 (Case 22)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected int mBannerResourceId;
@@ -718,9 +749,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 22)
+#### Code Fragment in OmniROM-android12 (Case 22)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final int mBannerResourceId;
@@ -735,11 +767,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mUid
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 23)
+#### Code Fragment in OmniROM-android11 (Case 23)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected int mUid;
@@ -747,9 +780,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 23)
+#### Code Fragment in OmniROM-android12 (Case 23)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final int mUid;
@@ -764,11 +798,12 @@ public class ApduServiceInfo implements Parcelable {
 - Relation : Define
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mSettingsActivityName
 
-- **modified line : 1**
+- **Modified Line : 1**
 
-#### Code fragment in OmniROM-android11 (Case 24)
+#### Code Fragment in OmniROM-android11 (Case 24)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     protected String mSettingsActivityName;
@@ -776,9 +811,10 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-#### Code fragment in OmniROM-android12 (Case 24)
+#### Code Fragment in OmniROM-android12 (Case 24)
 
 ```java
+// core/java/android/nfc/cardemulation/ApduServiceInfo.java
 public class ApduServiceInfo implements Parcelable {
     ...
     final String mSettingsActivityName;
@@ -790,30 +826,9 @@ public class ApduServiceInfo implements Parcelable {
 
 ## Table 1 Statistics on the number of lines of file code and complexity of files
 
-**Q:For example, when analyzing the impact of design smell occurrence on change- and fault-proneness, it is unclear how the authors accounted for confounding factors such as object-oriented smells contained in the files, which are already known to be related to change- and fault-proneness. The authors also did not account for the confounding effects of size and complexity.**
+**Table 1** is intended to provide supporting evidence for  the weakness mentioned in Review C.  It specifies the statistics of LOC (Lines of Code) and Cyclomatic Complexity for 17 versions of 4 projects, categorized by whether files are affected by anti-patterns.
 
-
-
-**Concept Description：**
-
-| Name            | Description                                                  |
-| --------------- | ------------------------------------------------------------ |
-| project         | Andriod project name                                         |
-| version         | Detailed version of project                                  |
-| file_num        | the number of java files in the project                      |
-| aff_num         | The number of java files with design smells                  |
-| aff_avg_loc     | The average number of line of code in java files with design smells |
-| aff_avg_cc      | The average $CC$ in java files with design smells            |
-| CC              | The sum of Cyclomatic Complexity of methods in code file     |
-| not_aff_num     | The number of java files **without** design smells           |
-| not_aff_avg_loc | The average number of line of code in java files **without** design smells |
-| not_aff_avg_cc  | The average $CC$ in java files **without** design smells     |
-
-
-
-**Detailed Data:**
-
-This table specify,  in 17 versions of 4 projects,  the statistic of LOC and Cyclomatic Complexity divided into two type by the design smell.
+**Review C#Weakness: For example, when analyzing the impact of design smell occurrence on change- and fault-proneness, it is unclear how the authors accounted for confounding factors such as object-oriented smells contained in the files, which are already known to be related to change- and fault-proneness. The authors also did not account for the confounding effects of size and complexity.**
 
 | project   | version      | file_num | aff_num | aff_avg_loc | aff_avg_cc | not_aff_num | not_aff_avg_loc | not_aff_avg_cc |
 | --------- | ------------ | -------- | ------- | ----------- | ---------- | ----------- | --------------- | -------------- |
@@ -835,34 +850,41 @@ This table specify,  in 17 versions of 4 projects,  the statistic of LOC and Cyc
 | OmniROM   | android-12.0 | 13359    | 100     | 1587.44     | 248.95     | 13259       | 376.5768        | 48.76763       |
 | OmniROM   | android-13.0 | 14324    | 96      | 1510.771    | 241.6771   | 14228       | 379.0928        | 48.29667       |
 
+**Concept description for Table 1 columns**
 
+| Name            | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| project         | Andriod project name                                         |
+| version         | Detailed version of project                                  |
+| file_num        | The number of Java files in the project                      |
+| aff_num         | The number of Java files with design smells                  |
+| aff_avg_loc     | The average number of line of code in Java files with design smells |
+| aff_avg_cc      | The average Cyclomatic Complexity(CC) in Java files with design smells |
+| CC              | The sum of Cyclomatic Complexity(CC) of methods in code file |
+| not_aff_num     | The number of Java files **without** design smells           |
+| not_aff_avg_loc | The average number of line of code in Java files **without** design smells |
+| not_aff_avg_cc  | The average Cyclomatic Complexity(CC) in Java files **without** design smells |
 
 ## Table 2 The correlation between the occurrence of design code smells in files and the file size as well as code complexity
 
-**Q: same with Q in TABLE 1**
+Based on the data from **Table 1**, we analyzed the correlation between the occurrence of design code smells in files and both file size (measured in Lines of Code, LOC) and code complexity (measured by Cyclomatic Complexity). The strength of these correlations is evaluated using **p-value** and **effect size**.  **Table 2** results indicate a statistically significant and strong correlation between design code smells and both file size and code complexity.
 
-Based on the data from Table 1, analyze the correlation between the occurrence of design code smells in files and the file size as well as code complexity. The strength of this correlation is measured using p-values and effect size.
-
-**Concept Description:**
-
-| Name        | Description                                                  |
-| ----------- | ------------------------------------------------------------ |
-| measure     | The name of metric                                           |
-| p-value     | The possibility of that metric of aff is larger than that of non_aff |
-| effect size | The standardized value of the mean difference between two sets of metrics, known as Cohen's d |
-
-**Detailed Data:**
-
-This table shows the the strength of this correlation measured by p-values and effect size.
-
-| measure | P-value             | effect_size |
+| measure | p-value             | effect size |
 | ------- | ------------------- | ----------- |
 | LOC     | 7.63E-06 < 0.000001 | 6.09        |
 | CC      | 7.63E-06 < 0.000001 | 5.42        |
 
+**Concept description for Table 2 columns**
+
+| Name        | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| measure     | The name of metric                                           |
+| p-value     | The p-value is the probability of obtaining results at least as extreme as the observed data, assuming that the null hypothesis is true. |
+| effect size | The effect size is a quantitative measure that estimates the magnitude of differences between groups, or strength of relationships between variables. |
+
 ## Table 3 The precision and recall of design smells in relation to merge conflicts at the file level
 
-This table specify the precision and recall of design smells in relation to merge conflicts at the file level.
+**Table 3** specifies the precision and recall of design smells in relation to merge conflicts at the file level.
 
 | Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| |  Rec_f  | Precision |
 | :-----: | :-------: | :-----------: | :------: | :-----: | :-------: |
@@ -892,7 +914,7 @@ This table specify the precision and recall of design smells in relation to merg
 
 ## Table 4 The recall of design smells in relation to merge conflicts at the block level
 
-This table specify the recall of design smells in relation to merge conflicts at the block level.
+**Table 4** specifies the recall of design smells in relation to merge conflicts at the block level.
 
 | Project | \|ConfB\| | \|ConfB_cap\| |  Rec_b  |
 | :-----: | :-------: | :-----------: | :-----: |
@@ -920,37 +942,13 @@ This table specify the recall of design smells in relation to merge conflicts at
 |   I-A   |   1322    |     1170      | 88.50%  |
 | Average |    695    |      623      | 72.76%  |
 
-## Table 5 Average conflict count statistics for files with and without design smell involvement
+## Table 5 Statistical analysis of conflict blocks associated with design smells and non-design-smells files
 
-The second column of this table represents the average number of conflict blocks in files with design smell involvement, while the third column represents the number of conflict blocks in files without design smell involvement.
+|   Measure    | p-value | effect size |
+| :----------: | :-----: | :---------: |
+| conf_average |  0.002  |    0.974    |
 
-| Project | *Conf_cap* | *Conf* |
-| :-----: | :--------: | :----: |
-|   A-T   |     2      |   4    |
-|   A-S   |     4      |   4    |
-|   A-R   |     5      |   3    |
-|   A-Q   |     4      |   3    |
-|  C-13   |     2      |   3    |
-|  C-12   |     1      |   3    |
-|  C-11   |     1      |   0    |
-| L-20.0  |     4      |   0    |
-| L-19.1  |     3      |   0    |
-| L-18.1  |     5      |   2    |
-| L-17.1  |     3      |   2    |
-| L-16.0  |     2      |   1    |
-| O-13.0  |     4      |   0    |
-| O-12.0  |     2      |   1    |
-|  O-11   |     7      |   3    |
-|  O-10   |     2      |   2    |
-|   O-9   |     2      |   1    |
-|   I-E   |     5      |   2    |
-|   I-D   |     5      |   2    |
-|   I-C   |     5      |   2    |
-|   I-B   |     5      |   2    |
-|   I-A   |     4      |   3    |
-| Average |     4      |   2    |
-
-## Table 6 Validation results of duplicate conflict blocks across commits
+## Table 6 Validation results of recurring conflict blocks across commits
 
 | Project | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :-----: | :-------: | :----------: | :--------: | :----: | :-------: |
@@ -972,7 +970,7 @@ The second column of this table represents the average number of conflict blocks
 |   O-9   |    12     |      0       |     0      |   0    |     0     |
 | Average |    119    |      7       |     5      | 40.94% |  39.12%   |
 
-## Table 7 Validation results of duplicate conflict blocks across versions
+## Table 7 Validation results of recurring conflict blocks across versions
 
 |  Project  | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :-------: | :-------: | :----------: | :--------: | :----: | :-------: |
@@ -982,7 +980,7 @@ The second column of this table represents the average number of conflict blocks
 |  OmniROM  |    623    |      4       |     4      |  100%  |   100%    |
 |  Average  |    477    |      12      |     13     | 74.65% |  75.00%   |
 
-## Table 8 Validation results of duplicate conflict blocks across projects
+## Table 8 Validation results of recurring conflict blocks across projects
 
 | **Project**  | **Block** | **Text-50%** | **Manual** | Recall | Precision |
 | :----------: | :-------: | :----------: | :--------: | :----: | :-------: |
