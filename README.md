@@ -12,6 +12,7 @@ The whole directory tree goes like the following:
 
 ```
 │  README.md
+│  Appendix.md
 │
 ├─Data
 │  ├─Methodology
