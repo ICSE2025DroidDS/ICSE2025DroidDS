@@ -8,7 +8,7 @@
 
 | Name          | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
-| Case$         | The Case where these design smell instances were refactored in version history |
+| Case          | The Case where these design smell instances were refactored in version history |
 | From Entity   | The source entity of relation                                |
 | Relation      | The type of relation                                         |
 | To Entity     | The destination entity of relation                           |
