@@ -2,7 +2,7 @@
 
 ## Mitigable Cases
 
-This section is intended to provide supporting evidence for  answering Review A's Question 1, Review B's Question 2, and the weakness mentioned in Review C. 
+This section provides supporting evidence for  answering Review A's Question 1, Review B's Question 2, and the weakness mentioned in Review C. 
 
 - **Review A#Q1: You discuss the concept of mitigable design smells and provide predicates for identifying them. Have you conducted any practical experiments or case studies to verify whether these mitigable smells can indeed be eradicated as easily as suggested? If not, are there plans to validate these mitigation strategies empirically?**
 - **Review B#Q2: Can you remove/rephrase the unsupported claims?**
@@ -19,7 +19,7 @@ This section is intended to provide supporting evidence for  answering Review A'
 | Modified Line | The number of modified line to eliminate the design smell    |
 | Code Fragment | The real code fragment of Case in Android project            |
 
-We have manually analyzed 73 instances of design smells that were eliminated in the version history, with 24 out of 73 cases identified as mitigable smells. Specifically, the detailed information of the 24 Cases is shown below, including code entities, dependencies, and source code fragment.
+Specifically, the detailed information of the 24 Cases is shown below, including code entities, dependencies, and source code snippets.
 
 ### Case 1
 
@@ -824,11 +824,11 @@ public class ApduServiceInfo implements Parcelable {
 
 
 
-## Table 1 The precision and recall of design smells in relation to merge conflicts at the file level
+## Table 1 The precision and recall results for Review A #Q3
 
-**Table 1** specifies the precision and recall of design smells in relation to merge conflicts at the file level.
+**Table 1** shows the precision and recall resuls for RQ2, using design smells to capture merge conflicts at the file level.
 
-| Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| |  Rec_f  | Precision |
+| Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| | Recall  | Precision |
 | :-----: | :-------: | :-----------: | :------: | :-----: | :-------: |
 |   A-T   |    60     |      40       |   329    | 66.67%  |  12.16%   |
 |   A-S   |    183    |      135      |   1463   | 73.77%  |   9.23%   |
@@ -854,85 +854,55 @@ public class ApduServiceInfo implements Parcelable {
 |   I-A   |    321    |      266      |   1817   | 82.87%  |  14.64%   |
 | Average |    161    |      133      |   711    | 68.62%  |  15.98%   |
 
-## Table 2 The recall of design smells in relation to merge conflicts at the block level
+## Table 2 Wilcoxon Sign-Rank Test results for Review A #Q3
 
-**Table 2** specifies the recall of design smells in relation to merge conflicts at the block level.
-
-| Project | \|ConfB\| | \|ConfB_cap\| |  Rec_b  |
-| :-----: | :-------: | :-----------: | :-----: |
-|   A-T   |    140    |      78       | 55.71%  |
-|   A-S   |    677    |      509      | 75.18%  |
-|   A-R   |    710    |      555      | 78.17%  |
-|   A-Q   |    479    |      362      | 75.57%  |
-|  C-13   |    95     |      74       | 77.89%  |
-|  C-12   |    57     |       1       |  1.75%  |
-|  C-11   |     1     |       1       | 100.00% |
-| L-20.0  |    190    |      128      | 67.37%  |
-| L-19.1  |     5     |       5       | 100.00% |
-| L-18.1  |    32     |      15       | 46.88%  |
-| L-17.1  |    97     |      56       | 57.73%  |
-| L-16.0  |    37     |      29       | 78.38%  |
-| O-13.0  |    111    |      56       | 50.45%  |
-| O-12.0  |    15     |       4       | 26.67%  |
-|  O-11   |   1311    |      972      | 74.14%  |
-|  O-10   |    65     |      47       | 72.31%  |
-|   O-9   |    16     |      12       | 75.00%  |
-|   I-E   |   2359    |     2261      | 95.85%  |
-|   I-D   |   2359    |     2304      | 97.67%  |
-|   I-C   |   2359    |     2304      | 97.67%  |
-|   I-B   |   2846    |     2754      | 96.77%  |
-|   I-A   |   1322    |     1170      | 88.50%  |
-| Average |    695    |      623      | 72.76%  |
-
-## Table 3 Statistical analysis of conflict blocks associated with design smells and non-design-smells files
-
-**Table 3** shows p-value for the average conflict (conf_average) is 0.002, indicating high statistical significance. The effect size is 0.974, demonstrating a very strong impact of design smells on file conflicts. Overall, these results highlight a strong correlation between design smells and file conflicts.
+**Table 2** shows that p-value is 0.002, indicating a high statistical significance. The effect size is 0.974, demonstrating a very strong impact of design smells on conflicts. Overall, these results highlight a strong correlation between design smells and conflicts.
 
 |   Measure    | p-value | effect size |
 | :----------: | :-----: | :---------: |
 | conf_average |  0.002  |    0.974    |
 
-## Table 4 Validation results of recurring conflict blocks across commits
+## Table 3 Average conflict count statistics for files with and without design smell involvement
 
-**Table 4**  shows the validation results for recurring conflict blocks across commits. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
+In **Table 3**, **avg_conflicts_aff**  represents the average number of conflict blocks in files with design smell involvement, while **avg_conflicts_aff** represents the number of conflict blocks in files without design smell involvement.  
 
-| Project | **Block** | **Text-50%** | **Manual** | Recall | Precision |
-| :-----: | :-------: | :----------: | :--------: | :----: | :-------: |
-|   A-T   |    140    |      0       |     0      |   0    |     0     |
-|   A-S   |    261    |      10      |     12     | 83.33% |   100%    |
-|   A-R   |    202    |      12      |     10     |  100%  |  83.33%   |
-|   A-Q   |    216    |      8       |     10     |  80%   |   100%    |
-|  C-13   |    95     |      0       |     0      |   0    |     0     |
-|  C-12   |    47     |      0       |     0      |   0    |     0     |
-|  C-11   |     1     |      0       |     0      |   0    |     0     |
-| L-20.0  |    190    |      0       |     4      |   0    |     0     |
-| L-19.1  |     5     |      0       |     0      |   0    |     0     |
-| L-18.1  |    31     |      4       |     4      |  100%  |   100%    |
-| L-17.1  |    95     |      11      |     12     | 91.67% |   100%    |
-| O-13.0  |    111    |      6       |     6      |  100%  |   100%    |
-| O-12.0  |    15     |      0       |     0      |   0    |     0     |
-|  O-11   |    426    |      61      |     26     |  100%  |  42.62%   |
-|  O-10   |    59     |      0       |     0      |   0    |     0     |
-|   O-9   |    12     |      0       |     0      |   0    |     0     |
-| Average |    119    |      7       |     5      | 40.94% |  39.12%   |
+The **Times_avg** row indicates that the average number of conflict blocks in files with design smells is twice that of files without design smells.
 
-## Table 5 Validation results of recurring conflict blocks across versions
+| Project   | avg_conflicts_aff | avg_conflicts_nonaff |
+| --------- | ----------------- | -------------------- |
+| Average   | 4                 | 2                    |
+| Times_avg | 2                 |                      |
 
-**Table 5**  shows the validation results for recurring conflict blocks across versions. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
+## Table 4 Validation results of recurring conflict blocks across **commits** for Review C response
 
-|  Project  | **Block** | **Text-50%** | **Manual** | Recall | Precision |
-| :-------: | :-------: | :----------: | :--------: | :----: | :-------: |
-|   AOSPA   |    819    |      35      |     37     | 94.59% |   100%    |
-|  CalyxOS  |    143    |      0       |     0      |   0    |     0     |
-| LineageOS |    321    |      9       |     9      |  100%  |   100%    |
-|  OmniROM  |    623    |      4       |     4      |  100%  |   100%    |
-|  Average  |    477    |      12      |     13     | 74.65% |  75.00%   |
+**Table 4**  shows the validation results for recurring conflict block identification across commits. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. The last two columns list the values of recall and precision.
 
-## Table 6 Validation results of recurring conflict blocks across projects
+| Project | **Block** | **Baseline** | Detection Results | Recall | Precision |
+| :-----: | :-------: | :----------: | :---------------: | :----: | :-------: |
+|   A-S   |    261    |      12      |        10         | 83.33% |   100%    |
+|   A-R   |    202    |      10      |        12         |  100%  |  83.33%   |
+|   A-Q   |    216    |      10      |         8         |  80%   |   100%    |
+| L-18.1  |    31     |      4       |         4         |  100%  |   100%    |
+| L-17.1  |    95     |      12      |        11         | 91.67% |   100%    |
+| O-13.0  |    111    |      6       |         6         |  100%  |   100%    |
+|  O-11   |    426    |      26      |        61         |  100%  |  42.62%   |
+| Average |    119    |      16      |        22         | 93.57% |  89.42%   |
 
-**Table 6**  shows the validation results for recurring conflict blocks across projects. The **Text-50%** column represents the number of recurring conflict blocks detected automatically, and the **Manual** column represents the number of recurring conflict blocks identified manually. The last two columns represent recall and precision.
+## Table 5 Validation results of recurring conflict blocks across **versions** for Review C response
 
-|   **Type**   | **Block** | **Text-50%** | **Manual** | Recall | Precision |
-| :----------: | :-------: | :----------: | :--------: | :----: | :-------: |
-| Diff-project |   1906    |     672      |    648     |  100%  |  96.43%   |
+**Table 5**  shows the validation results for recurring conflict block identification across versions. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. 
 
+|  Project  | **Block** | **Baseline** | Detection Results | Recall | Precision |
+| :-------: | :-------: | :----------: | :---------------: | :----: | :-------: |
+|   AOSPA   |    819    |      37      |        35         | 94.59% |   100%    |
+| LineageOS |    321    |      9       |         9         |  100%  |   100%    |
+|  OmniROM  |    623    |      4       |         4         |  100%  |   100%    |
+|  Average  |    477    |      17      |        16         | 98.20% |   100%    |
+
+## Table 6 Validation results of recurring conflict blocks across **projects** for Review C response
+
+**Table 6**  shows the validation results for recurring conflict blocks identification across projects. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. 
+
+|   **Type**   | **Block** | **Baseline** | Detection Results | Recall | Precision |
+| :----------: | :-------: | :----------: | :---------------: | :----: | :-------: |
+| Diff-project |   1906    |     648      |        672        |  100%  |  96.43%   |
