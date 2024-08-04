@@ -10,14 +10,14 @@ This section provides supporting evidence for  answering Review A's Question 1, 
 
 **Concept description**
 
-| Name          | Description                                                  |
-| ------------- | ------------------------------------------------------------ |
+| Name          | Description                                                                    |
+| ------------- | ------------------------------------------------------------------------------ |
 | Case          | The Case where these design smell instances were eliminated in version history |
-| From Entity   | The source entity of relation                                |
-| Relation      | The type of relation                                         |
-| To Entity     | The destination entity of relation                           |
-| Modified Line | The number of modified line to eliminate the design smell    |
-| Code Fragment | The real code fragment of Case in Android project            |
+| From Entity   | The source entity of relation                                                  |
+| Relation      | The type of relation                                                           |
+| To Entity     | The destination entity of relation                                             |
+| Modified Line | The number of modified line to eliminate the design smell                      |
+| Code Fragment | The real code fragment of Case in Android project                              |
 
 Specifically, the detailed information of the 24 Cases is shown below, including code entities, dependencies, and source code snippets.
 
@@ -53,7 +53,7 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
-	public QSFactoryImpl(Lazy<QSHost> qsHostLazy,
+    public QSFactoryImpl(Lazy<QSHost> qsHostLazy,
             Provider<WifiTile> wifiTileProvider,
             Provider<BluetoothTile> bluetoothTileProvider,
             Provider<CellularTile> cellularTileProvider,
@@ -111,11 +111,11 @@ Specifically, the detailed information of the 24 Cases is shown below, including
     }
 ```
 
-####  Code Fragment in  OmniROM-android12 (Case 1 - Case 4)
+#### Code Fragment in  OmniROM-android12 (Case 1 - Case 4)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
-	public QSFactoryImpl(
+    public QSFactoryImpl(
             Lazy<QSHost> qsHostLazy,
             Provider<CustomTile.Builder> customTileBuilderProvider,
             Provider<WifiTile> wifiTileProvider,
@@ -278,13 +278,11 @@ Specifically, the detailed information of the 24 Cases is shown below, including
     }
 ```
 
-
-
 #### Code Fragment in OmniROM-android11 (Case 5 - Case 8)
 
 ```java
 // packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java
-	public QSFactoryImpl(Lazy<QSHost> qsHostLazy,
+    public QSFactoryImpl(Lazy<QSHost> qsHostLazy,
             Provider<WifiTile> wifiTileProvider,
             Provider<BluetoothTile> bluetoothTileProvider,
             Provider<CellularTile> cellularTileProvider,
@@ -353,9 +351,9 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // services/core/java/com/android/server/wm/ActivityStackSupervisor.java
-	protected InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle, 
+    protected InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle, 
             PackageManager pm) throws XmlPullParserException, IOException { 
-    	...
+        ...
     }
 ```
 
@@ -363,16 +361,18 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // services/core/java/com/android/server/wm/ActivityStackSupervisor.java
-	private static InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle,
+    private static InjectedSetting parseServiceInfo(ResolveInfo service, UserHandle userHandle,
             PackageManager pm) throws XmlPullParserException, IOException {
-    	...
+        ...
     }
 ```
 
 ### Case 10
 
 - From Entity : com.android.keyguard.EmergencyButton
+
 - Relation : Define
+
 - To Entity : com.android.keyguard.EmergencyButton.updateEmergencyCallButton
 
 - **Modified Line : 1**
@@ -381,7 +381,7 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // services/core/java/com/android/server/wm/RootWindowContainer.java
-	public void updateEmergencyCallButton() {
+    public void updateEmergencyCallButton() {
         boolean visible = false;
         ...
     }
@@ -391,7 +391,7 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // services/core/java/com/android/server/wm/RootWindowContainer.java
-	void updateEmergencyCallButton(boolean isInCall, boolean isVoiceCapable, boolean simLocked) {
+    void updateEmergencyCallButton(boolean isInCall, boolean isVoiceCapable, boolean simLocked) {
         boolean visible = false;
         ...
     }
@@ -408,9 +408,9 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // telecomm/java/android/telecom/ConnectionService.java
-	protected void answerVideo(String callId, int videoState) {
+    protected void answerVideo(String callId, int videoState) {
         Log.i(this, "answerVideo %s", callId);
-    	...
+        ...
     }
 ```
 
@@ -418,7 +418,7 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // telecomm/java/android/telecom/ConnectionService.java
-	private void answerVideo(String callId, int videoState) {
+    private void answerVideo(String callId, int videoState) {
         Log.i(this, "answerVideo %s", callId);
         ...
     }
@@ -435,7 +435,7 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 
 ```java
 // telecomm/java/android/telecom/ConnectionService.java
-	protected void answer(String callId) {
+    protected void answer(String callId) {
         Log.i(this, "answer %s", callId);
         ...
     }
@@ -444,8 +444,8 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 #### Code Fragment in OmniROM-android12 (Case 12)
 
 ```java
-// telecomm/java/android/telecom/ConnectionService.java	
-	private void answer(String callId) {
+// telecomm/java/android/telecom/ConnectionService.java    
+    private void answer(String callId) {
         Log.i(this, "answer %s", callId);
         ...
     }
@@ -454,7 +454,9 @@ Specifically, the detailed information of the 24 Cases is shown below, including
 ### Case 13
 
 - From Entity : android.nfc.cardemulation.AidGroup
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.AidGroup.aids
 
 - **Modified Line : 1**
@@ -481,11 +483,12 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-
 ### Case 14
 
 - From Entity : android.nfc.cardemulation.AidGroup
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.AidGroup.category
 
 - **Modified Line : 1**
@@ -512,11 +515,12 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-
 ### Case 15
 
 - From Entity : android.nfc.cardemulation.AidGroup
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.AidGroup.description
 
 - **Modified Line : 1**
@@ -543,11 +547,12 @@ public class AidGroup implements Parcelable {
 }
 ```
 
-
 ### Case 16
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mService
 
 - **Modified Line : 1**
@@ -574,11 +579,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 17
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mDescription
 
 - **Modified Line : 1**
@@ -605,11 +611,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 18
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mOnHost
 
 - **Modified Line : 1**
@@ -636,11 +643,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 19
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mStaticAidGroups
 
 - **Modified Line : 1**
@@ -667,11 +675,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 20
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mDynamicAidGroups
 
 - **Modified Line : 1**
@@ -698,11 +707,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 21
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mRequiresDeviceUnlock
 
 - **Modified Line : 1**
@@ -729,11 +739,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 22
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mBannerResourceId
 
 - **Modified Line : 1**
@@ -760,11 +771,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 23
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mUid
 
 - **Modified Line : 1**
@@ -791,11 +803,12 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
-
 ### Case 24
 
 - From Entity : android.nfc.cardemulation.ApduServiceInfo
+
 - Relation : Define
+
 - To Entity : android.nfc.cardemulation.ApduServiceInfo.mSettingsActivityName
 
 - **Modified Line : 1**
@@ -822,87 +835,84 @@ public class ApduServiceInfo implements Parcelable {
 }
 ```
 
+## Table 1 The detailed precision and recall results in RQ2
 
+**Table 1** lists the *Precision* and *Recall* results of conflicts involved with design smells in details, including *\|ConfF|,\|ConfF_cap\|,\|CapF\|*.
 
-## Table 1 The precision and recall results for Review A #Q3
+| Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| | Precision | Recall  |
+|:------- |:---------:|:-------------:|:--------:|:---------:| ------- |
+| A-T     | 60        | 40            | 329      | 12.16%    | 66.67%  |
+| A-S     | 183       | 135           | 1463     | 9.23%     | 73.77%  |
+| A-R     | 170       | 110           | 333      | 33.03%    | 64.70%  |
+| A-Q     | 134       | 95            | 212      | 44.81%    | 70.90%  |
+| C-13    | 44        | 22            | 100      | 22.00%    | 50.00%  |
+| C-12    | 18        | 1             | 75       | 1.33%     | 5.56%   |
+| C-11    | 1         | 1             | 90       | 1.11%     | 100%    |
+| L-20.0  | 77        | 52            | 176      | 29.55%    | 67.53%  |
+| L-19.1  | 2         | 2             | 263      | 0.76%     | 100.00% |
+| L-18.1  | 18        | 10            | 275      | 3.64%     | 55.56%  |
+| L-17.1  | 43        | 21            | 270      | 7.78%     | 53.49%  |
+| L-16.0  | 23        | 16            | 255      | 6.27%     | 69.57%  |
+| O-13.0  | 42        | 26            | 96       | 27.08%    | 61.90%  |
+| O-12.0  | 9         | 2             | 100      | 2.00%     | 22.22%  |
+| O-11    | 255       | 147           | 419      | 35.08%    | 58.43%  |
+| O-10    | 36        | 26            | 247      | 10.53%    | 72.22%  |
+| O-9     | 10        | 7             | 199      | 3.52%     | 70.00%  |
+| I-E     | 534       | 485           | 2146     | 22.60%    | 90.82%  |
+| I-D     | 534       | 502           | 2308     | 21.75%    | 94.01%  |
+| I-C     | 534       | 502           | 2246     | 22.35%    | 94.01%  |
+| I-B     | 500       | 454           | 2221     | 20.44%    | 90.80%  |
+| I-A     | 321       | 266           | 1817     | 14.64%    | 82.87%  |
+| Average | 161       | 133           | 711      | 15.98%    | 68.87%  |
 
-**Table 1** shows the precision and recall resuls for RQ2, using design smells to capture merge conflicts at the file level.
+## Table 2 Results of Wilcoxon sign-rank test in RQ2
 
-| Project | \|ConfF\| | \|ConfF_cap\| | \|CapF\| | Recall  | Precision |
-| :-----: | :-------: | :-----------: | :------: | :-----: | :-------: |
-|   A-T   |    60     |      40       |   329    | 66.67%  |  12.16%   |
-|   A-S   |    183    |      135      |   1463   | 73.77%  |   9.23%   |
-|   A-R   |    170    |      110      |   333    | 64.70%  |  33.03%   |
-|   A-Q   |    134    |      95       |   212    | 70.90%  |  44.81%   |
-|  C-13   |    44     |      22       |   100    | 50.00%  |  22.00%   |
-|  C-12   |    18     |       1       |    75    |  5.56%  |   1.33%   |
-|  C-11   |     1     |       1       |    90    |  100%   |   1.11%   |
-| L-20.0  |    77     |      52       |   176    | 67.53%  |  29.55%   |
-| L-19.1  |     2     |       2       |   263    | 100.00% |   0.76%   |
-| L-18.1  |    18     |      10       |   275    | 55.56%  |   3.64%   |
-| L-17.1  |    43     |      21       |   270    | 53.49%  |   7.78%   |
-| L-16.0  |    23     |      16       |   255    | 69.57%  |   6.27%   |
-| O-13.0  |    42     |      26       |    96    | 61.90%  |  27.08%   |
-| O-12.0  |     9     |       2       |   100    | 22.22%  |   2.00%   |
-|  O-11   |    255    |      147      |   419    | 58.43%  |  35.08%   |
-|  O-10   |    36     |      26       |   247    | 72.22%  |  10.53%   |
-|   O-9   |    10     |       7       |   199    | 70.00%  |   3.52%   |
-|   I-E   |    534    |      485      |   2146   | 90.82%  |  22.60%   |
-|   I-D   |    534    |      502      |   2308   | 94.01%  |  21.75%   |
-|   I-C   |    534    |      502      |   2246   | 94.01%  |  22.35%   |
-|   I-B   |    500    |      454      |   2221   | 90.80%  |  20.44%   |
-|   I-A   |    321    |      266      |   1817   | 82.87%  |  14.64%   |
-| Average |    161    |      133      |   711    | 68.62%  |  15.98%   |
+Table 2 presents the Wilcoxon Sign-Rank Test results with P-value of 0.002 and effect size of 0.974. It indicates that the number of code conflict blocks involved with design smell files is significantly larger than that of other files.
 
-## Table 2 Wilcoxon Sign-Rank Test results for Review A #Q3
-
-**Table 2** shows that p-value is 0.002, indicating a high statistical significance. The effect size is 0.974, demonstrating a very strong impact of design smells on conflicts. Overall, these results highlight a strong correlation between design smells and conflicts.
-
-|   Measure    | p-value | effect size |
-| :----------: | :-----: | :---------: |
-| conf_average |  0.002  |    0.974    |
+| Measure | *P-value* | *effect size* |
+|:-------:|:---------:|:-------------:|
+| *confB* | 0.002     | 0.974         |
 
 ## Table 3 Average conflict count statistics for files with and without design smell involvement
 
-In **Table 3**, **avg_conflicts_aff**  represents the average number of conflict blocks in files with design smell involvement, while **avg_conflicts_aff** represents the number of conflict blocks in files without design smell involvement.  
+We measured *avg_confB_aff* and *avg_confB_nonaff* to count the average conflict blocks within design smell files and those outside design smell files.
 
-The **Times_avg** row indicates that the average number of conflict blocks in files with design smells is twice that of files without design smells.
+The ***times*** row indicates that the files affected by design smells have been involved in 2 times (indicated by *times* = 2) more conflict blocks than the non-affected files on average.
 
-| Project   | avg_conflicts_aff | avg_conflicts_nonaff |
-| --------- | ----------------- | -------------------- |
-| Average   | 4                 | 2                    |
-| Times_avg | 2                 |                      |
+| *avg_confB_aff* | *avg_confB_nonaff* | *times* |
+|:---------------:|:------------------:|:-------:|
+| 4               | 2                  | 2       |
 
-## Table 4 Validation results of recurring conflict blocks across **commits** for Review C response
+## Table 4 Validation results of recurring conflict blocks across **commits** for **Comments** **3.8**
 
-**Table 4**  shows the validation results for recurring conflict block identification across commits. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. The last two columns list the values of recall and precision.
+**Table 4**  shows the validation results for recurring conflict block identification across commits. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calculated the precision and recall of the recurring block detection results. The last two columns list the values of recall and precision.
 
-| Project | **Block** | **Baseline** | Detection Results | Recall | Precision |
-| :-----: | :-------: | :----------: | :---------------: | :----: | :-------: |
-|   A-S   |    261    |      12      |        10         | 83.33% |   100%    |
-|   A-R   |    202    |      10      |        12         |  100%  |  83.33%   |
-|   A-Q   |    216    |      10      |         8         |  80%   |   100%    |
-| L-18.1  |    31     |      4       |         4         |  100%  |   100%    |
-| L-17.1  |    95     |      12      |        11         | 91.67% |   100%    |
-| O-13.0  |    111    |      6       |         6         |  100%  |   100%    |
-|  O-11   |    426    |      26      |        61         |  100%  |  42.62%   |
-| Average |    119    |      16      |        22         | 93.57% |  89.42%   |
+| Project | **Block** | **Baseline** | Detection Results | Precision | Recall |
+|:-------:|:---------:|:------------:|:-----------------:|:---------:|:------:|
+| A-S     | 261       | 12           | 10                | 100%      | 83.33% |
+| A-R     | 202       | 10           | 12                | 83.33%    | 100%   |
+| A-Q     | 216       | 10           | 8                 | 100%      | 80%    |
+| L-18.1  | 31        | 4            | 4                 | 100%      | 100%   |
+| L-17.1  | 95        | 12           | 11                | 100%      | 91.67% |
+| O-13.0  | 111       | 6            | 6                 | 100%      | 100%   |
+| O-11    | 426       | 26           | 61                | 42.62%    | 100%   |
+| Average | 119       | 16           | 22                | 89.42%    | 93.57% |
 
-## Table 5 Validation results of recurring conflict blocks across **versions** for Review C response
+## Table 5 Validation results of recurring conflict blocks across **versions** for **Comments** **3.8**
 
-**Table 5**  shows the validation results for recurring conflict block identification across versions. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. 
+**Table 5**  shows the validation results for recurring conflict block identification across versions. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calculated the precision and recall of the recurring block detection results. 
 
-|  Project  | **Block** | **Baseline** | Detection Results | Recall | Precision |
-| :-------: | :-------: | :----------: | :---------------: | :----: | :-------: |
-|   AOSPA   |    819    |      37      |        35         | 94.59% |   100%    |
-| LineageOS |    321    |      9       |         9         |  100%  |   100%    |
-|  OmniROM  |    623    |      4       |         4         |  100%  |   100%    |
-|  Average  |    477    |      17      |        16         | 98.20% |   100%    |
+| Project   | **Block** | **Baseline** | Detection Results | Precision | Recall |
+|:---------:|:---------:|:------------:|:-----------------:|:---------:|:------:|
+| AOSPA     | 819       | 37           | 35                | 100%      | 94.59% |
+| LineageOS | 321       | 9            | 9                 | 100%      | 100%   |
+| OmniROM   | 623       | 4            | 4                 | 100%      | 100%   |
+| Average   | 477       | 17           | 16                | 100%      | 98.20% |
 
-## Table 6 Validation results of recurring conflict blocks across **projects** for Review C response
+## Table 6 Validation results of recurring conflict blocks across **projects** for **Comments** **3.8**
 
-**Table 6**  shows the validation results for recurring conflict blocks identification across projects. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calulate the precision and recall of the recurring block detection results. 
+**Table 6**  shows the validation results for recurring conflict blocks identification across projects. The **Detection Results** column lists the recurring conflict blocks detected automatically, and the **Baseline** column counts recurring conflict blocks in the baseline. Against the baseline, we calculated the precision and recall of the recurring block detection results. 
 
-|   **Type**   | **Block** | **Baseline** | Detection Results | Recall | Precision |
-| :----------: | :-------: | :----------: | :---------------: | :----: | :-------: |
-| Diff-project |   1906    |     648      |        672        |  100%  |  96.43%   |
+| **Type**     | **Block** | **Baseline** | Detection Results | Precision | Recall |
+|:------------:|:---------:|:------------:|:-----------------:|:---------:|:------:|
+| Diff-project | 1906      | 648          | 672               | 96.43%    | 100%   |
